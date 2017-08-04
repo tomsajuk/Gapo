@@ -1,0 +1,14 @@
+{
+  "name": "API chat",
+  "version": "1.0.0",
+  "description": "Get text from Gapo and send to Python",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "tomsajuk",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4"
+  }
+}
