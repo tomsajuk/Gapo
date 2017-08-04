@@ -1,5 +1,5 @@
 {
-  "name": "API chat",
+  "name": "API-chat",
   "version": "1.0.0",
   "description": "Get text from Gapo and send to Python",
   "main": "index.js",
