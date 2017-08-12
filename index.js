@@ -24,7 +24,7 @@ restService.post('/echo', function(req, res) {
 	});
 
 	var data = fs.readFileSync('output.txt');
-
+	console.log(data.toString());
     return res.json({
         speech: data,
         displayText: data,
