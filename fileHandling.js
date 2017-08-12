@@ -14,5 +14,5 @@ module.exports.readFromFile = function () {
 };
 
 module.exports.perm = function (message) {
-	fs.writeFileSync('conversation.txt', message);
+	fs.appendFile('message.txt', message);
 };
