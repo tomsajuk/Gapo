@@ -16,18 +16,10 @@ restService.use(bodyParser.json());
 // function that gets the text from api.ai. 
 restService.post('/echo', function(req, res) {
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
-    
-    fs.writeFile('input.txt', speech,  function(err) {
-	   if (err) {
-	      return console.error(err);
-	   }
-	});
 
-	var data = fs.readFileSync('output.txt');
-	console.log(data.toString());
     return res.json({
-        speech: data,
-        displayText: data,
+        speech: speech,
+        displayText: speech,
         source: 'webhook-heroku'
     });
 });
