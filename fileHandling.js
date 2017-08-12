@@ -12,3 +12,7 @@ module.exports.readFromFile = function () {
 	fs.truncate('./input.txt', 0, function(){console.log('done1')});
 	return data.toString();
 };
+
+module.exports.perm = function (message) {
+	fs.writeFileSync('conversation.txt', message);
+};
