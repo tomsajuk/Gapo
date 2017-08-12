@@ -22,22 +22,16 @@ restService.post('/echo', function(req, res) {
 
 	PythonShell.run('run.py', function (err) {
 	  if (err) throw err;
-	  console.log('finished');
-	});
-
-	var data;
-	function re() {
-		data = file.readFromFile();
-		console.log(data);
-	} 
-
-	setTimeout(re, 300);
-	
-    return res.json({
+	  data = file.readFromFile();
+		return res.json({
         speech: data,
         displayText: data,
         source: 'webhook-heroku'
     });
+	  console.log('finished');
+	});
+
+    
 });
 
 
