@@ -31,7 +31,7 @@ restService.post('/echo', function(req, res) {
 		console.log(data);
 	} 
 
-	setTimeout(re, 3000);
+	setTimeout(re, 300);
 	
     return res.json({
         speech: data,
