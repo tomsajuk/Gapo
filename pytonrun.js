@@ -1,12 +1,17 @@
 var PythonShell = require('python-shell');
 var pyshell = new PythonShell('run.py');
+var fs = require("fs")
 
-var msg = 'heelo';
-pyshell.send(msg);
+var data = fs.readFileSync('input.txt');
+
+pyshell.send(data.toString());
 
 pyshell.on('message', function (mes) {
-	console.log(mes);
-	exports.lol = mes;
+	fs.writeFile('output.txt', mes,  function(err) {
+	   if (err) {
+	      return console.error(err);
+	   }
+	});
 });
 
 
