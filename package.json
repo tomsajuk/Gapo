@@ -9,6 +9,8 @@
   "author": "tomsajuk",
   "dependencies": {
     "body-parser": "^1.15.0",
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "watson-developer-cloud": "^2.37.0",
+    "python-shell": "0.4.0"
   }
 }
