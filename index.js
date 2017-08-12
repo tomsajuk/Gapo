@@ -22,7 +22,7 @@ restService.post('/echo', function(req, res) {
 
 	PythonShell.run('run.py', function (err) {
 	  if (err) throw err;
-	  data = file.readFromFile();
+	  var data = file.readFromFile();
 		return res.json({
         speech: data,
         displayText: data,
