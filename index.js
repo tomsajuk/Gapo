@@ -21,7 +21,7 @@ restService.post('/echo', function(req, res) {
     
     file.writeToFile(speech);
 	var reply = req.body.result.fulfillment.displayText;
-	fs.writeFile('/conversation.txt',speech + ' ' + reply);
+	file.perm(speech + ' ' + reply);
 	PythonShell.run('run.py', function (err) {
 	  if (err) throw err;
 	  var data = file.readFromFile();
