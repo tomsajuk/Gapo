@@ -2,9 +2,10 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-var fs = require("fs");
 
-var run = require('./pytonrun.js');
+var PythonShell = require('python-shell');
+var file = require('./fileHandling.js');
+
 const restService = express();
 
 restService.use(bodyParser.urlencoded({
@@ -17,20 +18,28 @@ restService.use(bodyParser.json());
 restService.post('/echo', function(req, res) {
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
     
-    fs.writeFile('input.txt', speech,  function(err) {
-	   if (err) {
-	      return console.error(err);
-	   }
+    file.writeToFile(speech);
+
+	PythonShell.run('run.py', function (err) {
+	  if (err) throw err;
+	  console.log('finished');
 	});
 
-	var data = fs.readFileSync('output.txt');
-	console.log(data.toString());
+	var data;
+	function re() {
+		data = file.readFromFile();
+		console.log(data);
+	} 
+
+	setTimeout(re, 3000);
+	
     return res.json({
         speech: data,
         displayText: data,
         source: 'webhook-heroku'
     });
 });
+
 
 restService.listen((process.env.PORT || 8000), function() {
     console.log("Server up and listening");
